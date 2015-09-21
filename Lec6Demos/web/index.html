@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form name="myForm" action="SimpleServlet" method="get">
+            <fieldset>
+                <legend>Form Get</legend>
+                Input name:<input type="text" name="name" /><br/>
+
+                <input name="activities" type="checkbox" value="Run">Run<br/>
+                <input name="activities" type="checkbox" value="Fly">Fly<br/>
+                <input name="activities" type="checkbox" value="Dance">Dance<br/>
+
+                <input type="submit" value="Submit"/>
+            </fieldset>
+        </form>
+
+        <form name="myForm" action="SimpleServlet" method="post">
+            <fieldset>
+                <legend>Form Post</legend>
+                Input name:<input type="text" name="name" /><br/>
+
+                <input name="activities" type="checkbox" value="Run">Run<br/>
+                <input name="activities" type="checkbox" value="Fly">Fly<br/>
+                <input name="activities" type="checkbox" value="Dance">Dance<br/>
+
+                <input type="submit" value="Submit"/>
+            </fieldset>
+        </form>
+
+        <form name="myForm" action="ResponseForwardingServlet" method="post">
+            <fieldset>
+                <legend>Response Forwarding</legend>
+                Input name:<input type="text" name="name" /><br/>
+                <input type="submit" value="Submit"/>
+            </fieldset>
+        </form>
+        
+        <form name="myForm" action="ResponseRedirectServlet" method="post">
+            <fieldset>
+                <legend>Response Redirect</legend>
+                Input name:<input type="text" name="name" /><br/>
+                website:<input type="text" name="website" /><br/>
+                <input type="submit" value="Submit"/>
+            </fieldset>
+        </form>
+    </body>
+</html>
