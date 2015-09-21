@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="AddPerson.html">Add person</
+        <a href="AddPerson.html">Add person</a>
     </body>
 </html>
