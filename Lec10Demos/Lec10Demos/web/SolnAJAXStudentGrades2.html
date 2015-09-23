@@ -1,0 +1,53 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">        
+            var xmlhttp;
+
+            function getStudentGrades() {
+                if (window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var nameField = document.getElementById("name")
+                var url = "StudentGradesServlet?name="+encodeURIComponent(nameField.value);
+                xmlhttp.open("GET", url, true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+            
+            
+            function callback() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        var rootNode=xmlhttp.responseXML.documentElement
+                        var students = rootNode.getElementsByTagName("STUDENT");
+                        var tableTxt = "<table>"
+                        tableTxt = tableTxt + "<tr><td><b>Name</b></td><td><b>Grade</b></td></tr>";
+                        for (i=0;i<students.length;i++){
+                            var nameNodes = students[i].getElementsByTagName("NAME");
+                            var name = nameNodes[0].firstChild.nodeValue;
+                            var gradeNodes = students[i].getElementsByTagName("GRADE");
+                            var grade = gradeNodes[0].firstChild.nodeValue;
+                            tableTxt=tableTxt+"<tr><td>"+name+"</td><td>"+grade+"</td></tr>";
+                        }
+                        tableTxt = tableTxt + "</table>";
+                        document.getElementById("results").innerHTML = tableTxt; 
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        Student Grades:<input type="text" id="name" value="" onkeyup="getStudentGrades();"/>
+        <div id="results"></div>
+    </body>
+</html>

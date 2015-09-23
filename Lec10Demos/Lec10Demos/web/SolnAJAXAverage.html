@@ -1,0 +1,45 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AJAX Average</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">        
+            var xmlhttp;
+
+            function getAverage() {
+                var scoreField = document.getElementById("score");
+                if (window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var url = "AverageSolnServlet";
+                var params = "score=" + encodeURIComponent(scoreField.value);
+                xmlhttp.open("POST", url, true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send(params);
+            }
+            
+            
+            function callback() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        document.getElementById("average").innerHTML = xmlhttp.responseText;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        Score <input type="text" name="Score" id="score" value="0" />
+        <input type="button" value="Add Score" onclick="getAverage();" /><br/>
+        Average score:<br/>
+        <div id="average"></div>
+    </body>
+</html>
