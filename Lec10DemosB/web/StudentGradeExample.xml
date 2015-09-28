@@ -1,0 +1,15 @@
+
+<STUDENTS>
+    <STUDENT>   
+        <NAME>Chad</NAME>
+        <GRADE>85</GRADE>
+    </STUDENT>
+    <STUDENT>   
+        <NAME>Bob</NAME>
+        <GRADE>89</GRADE>
+    </STUDENT>
+    <STUDENT>   
+        <NAME>Sam</NAME>
+        <GRADE>92</GRADE>
+    </STUDENT>
+</STUDENTS>

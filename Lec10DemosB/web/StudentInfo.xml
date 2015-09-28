@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited by XMLSpy® -->
+<STUDENTS>
+    <STUDENT>
+        <NAME>Chad</NAME>
+        <ADDRESSINFO>
+            <STREET>Red Oak Hill Rd.</STREET>
+            <STATE>CT</STATE>
+        </ADDRESSINFO>
+    </STUDENT>
+    <STUDENT>
+        <NAME>John</NAME>
+        <ADDRESSINFO>
+            <STREET>Maple St.</STREET>
+            <STATE>NY</STATE>
+        </ADDRESSINFO>
+    </STUDENT>
+    <STUDENT>
+        <NAME>Jane</NAME>
+        <ADDRESSINFO>
+            <STREET>Clark St.</STREET>
+            <STATE>IL</STATE>
+        </ADDRESSINFO>
+    </STUDENT>
+    <STUDENT>
+        <NAME>Kyle</NAME>
+        <ADDRESSINFO>
+            <STREET>Redmont Rd.</STREET>
+            <STATE>MN</STATE>
+        </ADDRESSINFO>
+    </STUDENT>
+</STUDENTS>

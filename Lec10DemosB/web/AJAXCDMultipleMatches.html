@@ -1,0 +1,49 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">        
+            var xmlhttp;
+
+            function getArtists() {
+                if (window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var url = "cd_catalog.xml";
+                xmlhttp.open("GET", url, true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+            
+            
+            function callback() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        var rootNode=xmlhttp.responseXML.documentElement
+                        var cds = rootNode.getElementsByTagName("ARTIST");
+                        var outputHTML = "";
+                        for (i=0;i<cds.length;i++){
+                            
+                            var artist = cds[i].firstChild.nodeValue;
+                            outputHTML=outputHTML+"<b>"+artist+"</b><br/>";
+                        }
+                        document.getElementById("results").innerHTML = outputHTML; 
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        My CD library:
+        <input type="submit" value="Get CDs" onclick="getArtists();"/>
+        <div id="results"></div>
+    </body>
+</html>
