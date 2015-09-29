@@ -8,10 +8,7 @@
 <%@page import="java.util.*;"%>
 <%@page import="edu.ccsu.SolnCDBean;"%>
 <jsp:useBean id="enteredCD" scope="page" class="edu.ccsu.SolnCDBean" />
-<jsp:setProperty name="enteredCD" property="artist" param="artist" />
-<jsp:setProperty name="enteredCD" property="title" param="title" />
-<jsp:setProperty name="enteredCD" property="rating" param="rating" />
-<% /*<jsp:setProperty name="enteredCD" property="*" /> */%>
+<jsp:setProperty name="enteredCD" property="*" />
 <jsp:useBean id="AverageRatings" scope="session" class="edu.ccsu.SolnCDEntries" />
 <jsp:setProperty name="AverageRatings" property="ratings" param="rating" />
 <!DOCTYPE html>

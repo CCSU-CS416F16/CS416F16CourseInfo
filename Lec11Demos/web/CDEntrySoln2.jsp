@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="SolnCDResults.jsp">
+        <form action="SolnCDResultsV2.jsp">
             CD artist: <input type="text" name="artist" value="" /><br/>
             CD title: <input type="text" name="title" value="" /><br/>
             CD rating: <input type="text" name="rating" value="" /><br/>

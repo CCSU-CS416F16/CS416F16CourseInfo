@@ -6,5 +6,5 @@
 <a href="pageWithError.jsp">Page with error</a><br/>
 <a href="demoJavaBean.jsp">Java bean</a><br/>
 <a href="beanCounter.jsp">Bean counter</a><br/>
-<a href="CDEntry.jsp">Your CD entry shell</a><br/>
+<a href="CDEntrySoln.jsp">Your CD entry shell</a><br/>
 <a href="CDEntrySoln.jsp">What the CD functionality should look like when completely done</a><br/>
