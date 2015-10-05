@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var xmlhttp;
+
+            function getCDs() {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var url = "AjaxJsonCDDemoServlet";
+                xmlhttp.open("GET", url, true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+
+
+            function callback() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        // Javascript function JSON.parse to parse JSON data
+                        // jsonObj variable now contains array and the data structure and 
+                        // can be accessed as an object                        
+                        var cdArray = JSON.parse(xmlhttp.responseText);
+
+                        var tableTxt = "<table border=\"1\">";
+                        tableTxt = tableTxt + "<tr><th>Title</th><th>First musician</th></tr>";
+                        for (i = 0; i < cdArray.length; i++) {
+                            var cd = cdArray[i];
+                            for (j = 0; j < cd.musician.length; j++) {
+                                var musician = cd.musician[j];
+                                tableTxt = tableTxt + "<tr><td>" + cd.title + "</td><td>" + musician.first + " " + musician.last + "</td></tr>";
+                                break;  // For demo only want first one
+                            }
+                        }
+                        tableTxt = tableTxt + "</table>";
+                        document.getElementById("results").innerHTML = tableTxt;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" id="name" value="Retrieve" onclick="getCDs();"/>
+        <div id="results"></div>
+    </body>
+</html>

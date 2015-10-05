@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var xmlhttp;
+
+            function getPeople() {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var nameField = document.getElementById("name")
+                var url = "AjaxJsonFindByNameServlet?firstName=" + encodeURIComponent(nameField.value);
+                xmlhttp.open("GET", url, true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+
+
+            function callback() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                       // Javascript function JSON.parse to parse JSON data
+                       // jsonObj variable now contains array and the data structure and 
+                        // can be accessed as an object
+                        var personArray = JSON.parse(xmlhttp.responseText);
+    
+                        var tableTxt = "<table border=\"1\">";
+                        tableTxt = tableTxt + "<tr><th>First</th><th>Last</b></th>";
+                        for (i = 0; i < personArray.length; i++) {
+                            var person = personArray[i];
+                            tableTxt = tableTxt + "<tr><td>" + person.FIRSTNAME + "</td><td>" + person.LASTNAME + "</td></tr>";
+                        }
+                        tableTxt = tableTxt + "</table>";
+                        document.getElementById("results").innerHTML = tableTxt;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        People:<input type="text" id="name" value="" onkeyup="getPeople();"/>
+        <div id="results"></div>
+    </body>
+</html>

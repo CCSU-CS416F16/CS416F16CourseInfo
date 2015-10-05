@@ -1,0 +1,56 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var xmlhttp;
+
+            function getCDs() {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var url = "AjaxXmlCDDemoServlet";
+                xmlhttp.open("GET", url, true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+
+
+            function callback() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        var rootNode = xmlhttp.responseXML.documentElement
+                        var cdNodes = rootNode.getElementsByTagName("CD");
+
+                        var tableTxt = "<table border=\"1\">";
+                        tableTxt = tableTxt + "<tr><th>Title</th><th>First musician</th></tr>";
+                        for (i = 0; i < cdNodes.length; i++) {
+                            var title = cdNodes[i].getElementsByTagName("title")[0].firstChild.nodeValue;
+                            var musicianNodes = cdNodes[i].getElementsByTagName("musician");
+                            for (j = 0; j < musicianNodes.length; j++) {
+                                var first = musicianNodes[j].getElementsByTagName("first")[0].firstChild.nodeValue;
+                                var last = musicianNodes[j].getElementsByTagName("last")[0].firstChild.nodeValue;
+                                tableTxt = tableTxt + "<tr><td>" + title + "</td><td>" + first + " " + last + "</td></tr>";
+                                break;  // For demo only want first one
+                            }
+                        }
+                        tableTxt = tableTxt + "</table>";
+                        document.getElementById("results").innerHTML = tableTxt;
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="button" id="name" value="Retrieve" onclick="getCDs();"/>
+        <div id="results"></div>
+    </body>
+</html>

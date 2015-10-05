@@ -1,0 +1,53 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">        
+            var xmlhttp;
+
+            function getPeople() {
+                if (window.XMLHttpRequest){
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp=new XMLHttpRequest();
+                }else{
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                var nameField = document.getElementById("name")
+                var url = "AJAXFindByNameServlet?firstName="+encodeURIComponent(nameField.value);
+                xmlhttp.open("GET", url, true);
+                xmlhttp.onreadystatechange = callback;
+                xmlhttp.send();
+            }
+            
+            
+            function callback() {
+                if (xmlhttp.readyState == 4) {
+                    if (xmlhttp.status == 200) {
+                        var rootNode=xmlhttp.responseXML.documentElement
+                        var peopleNodes = rootNode.getElementsByTagName("PERSON");
+                        var tableTxt = "<table>"
+                        tableTxt = tableTxt + "<tr><td><b>First</b></td><td><b>Last</b></td></tr>";
+                        for (i=0;i<peopleNodes.length;i++){
+                            var firstNameNodes = peopleNodes[i].getElementsByTagName("FIRSTNAME");
+                            var firstName = firstNameNodes[0].firstChild.nodeValue;
+                            var lastNameNodes = peopleNodes[i].getElementsByTagName("LASTNAME");
+                            var lastName = lastNameNodes[0].firstChild.nodeValue;
+                            tableTxt=tableTxt+"<tr><td>"+firstName+"</td><td>"+lastName+"</td></tr>";
+                        }
+                        tableTxt = tableTxt + "</table>";
+                        document.getElementById("results").innerHTML = tableTxt; 
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        People:<input type="text" id="name" value="" onkeyup="getPeople();"/>
+        <div id="results"></div>
+    </body>
+</html>
