@@ -8,7 +8,7 @@ package edu.ccsu;
  *
  * @author cw1491
  */
-public class SolnCDBean {
+public class SolnCDBean implements java.io.Serializable{
     private String artist;
     private String title;
     private Integer rating;
