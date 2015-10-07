@@ -4,11 +4,13 @@
  */
 package edu.ccsu;
 
+import java.io.Serializable;
+
 /**
  *
  * @author cw1491
  */
-public class BeanCounter {
+public class BeanCounter implements Serializable{
     private int numberOfBeans;
     public BeanCounter(){
         

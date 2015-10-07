@@ -1,0 +1,13 @@
+SMAP
+newtag_005ffile_tag.java
+JSP
+*S JSP
+*F
++ 0 newtag_file.tag
+WEB-INF/tags/newtag_file.tag
+*L
+5,5:58
+9,4:62
+12:65
+13:66,3
+*E

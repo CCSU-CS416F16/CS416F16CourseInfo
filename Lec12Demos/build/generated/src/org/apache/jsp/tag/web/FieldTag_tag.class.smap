@@ -1,0 +1,14 @@
+SMAP
+FieldTag_tag.java
+JSP
+*S JSP
+*F
++ 0 FieldTag.tag
+WEB-INF/tags/FieldTag.tag
+*L
+5,5:82
+9,5:86
+14:91,3
+15:94,5
+16,2:99
+*E

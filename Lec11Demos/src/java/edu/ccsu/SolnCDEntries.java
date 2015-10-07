@@ -4,11 +4,13 @@
  */
 package edu.ccsu;
 
+import java.io.Serializable;
+
 /**
  *
  * @author cw1491
  */
-public class SolnCDEntries {
+public class SolnCDEntries implements Serializable{
     private Double ratings;
     private Integer numRatings;
 
