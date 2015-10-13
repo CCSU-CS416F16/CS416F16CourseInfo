@@ -45,7 +45,7 @@ public class ResponseForwardingServlet extends HttpServlet {
             }
             request.setAttribute("family", familyMembers);
 
-            request.getRequestDispatcher("PrintFamilyServlet").forward(request, response);
+            request.getRequestDispatcher("/PrintFamilyServlet").forward(request, response);
         } finally {
             out.close();
         }
