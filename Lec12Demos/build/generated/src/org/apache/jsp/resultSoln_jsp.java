@@ -94,6 +94,7 @@ public final class resultSoln_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write(" \n");
       out.write("    </body>\n");
       out.write("</html>\n");
+      out.write("    ");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

@@ -9,11 +9,11 @@ public final class EnterAddress_jsp extends org.apache.jasper.runtime.HttpJspBas
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
 
-  private static java.util.Vector _jspx_dependants;
+  private static java.util.List<String> _jspx_dependants;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
-  public Object getDependants() {
+  public java.util.List<String> getDependants() {
     return _jspx_dependants;
   }
 
@@ -51,7 +51,7 @@ public final class EnterAddress_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("    <title>Enter address</title>\r\n");
       out.write("  </head>\r\n");
       out.write("  <body>\r\n");
-      out.write("    <form action=\"TagResult.jsp\" method=\"POST\">\r\n");
+      out.write("    <form action=\"TagResult.jsp\" method=\"Get\">\r\n");
       out.write("         Street address: <input type=\"text\" name=\"streetAddress\"/><br/>\r\n");
       out.write("         City: <input type=\"text\" name=\"city\"/><br/>\r\n");
       out.write("         State: <input type=\"text\" name=\"state\"/><br/>\r\n");

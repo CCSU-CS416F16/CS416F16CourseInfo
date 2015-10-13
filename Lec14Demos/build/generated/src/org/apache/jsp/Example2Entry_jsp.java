@@ -52,7 +52,7 @@ public final class Example2Entry_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <h1>Enter data</h1>\n");
-      out.write("        <form action=\"Example2Results.jsp\">\n");
+      out.write("        <form action=\"Example2ResultsSoln.jsp\">\n");
       out.write("            Name: <input type=\"text\" name=\"firstName\" value=\"\" />\n");
       out.write("            <select name=\"age\">\n");
       out.write("                <option></option>\n");

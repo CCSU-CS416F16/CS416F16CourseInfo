@@ -16,7 +16,7 @@
     <body>
         <form action="TagResult.jsp">
             <table>
-                <my:LabeledTextField label="First Name" name="first"/>
+                <my:LabeledTextField label="First Name" name="first" />
                 <my:LabeledTextField label="Last Name" name="last" />
                 <my:LabeledTextField label="Street Address" name="streetAddress" value="11 Main St." />
                 <ad:FieldTag label="City" name="city" value="New Britain"/>

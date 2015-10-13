@@ -12,7 +12,7 @@
     <title>Enter address</title>
   </head>
   <body>
-    <form action="TagResult.jsp" method="POST">
+    <form action="TagResult.jsp" method="Get">
          Street address: <input type="text" name="streetAddress"/><br/>
          City: <input type="text" name="city"/><br/>
          State: <input type="text" name="state"/><br/>

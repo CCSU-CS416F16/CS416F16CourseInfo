@@ -4,11 +4,13 @@
  */
 package edu.ccsu.solns;
 
+import java.io.Serializable;
+
 /**
  *
  * @author cw1491
  */
-public class Item {
+public class Item implements Serializable{
     private String itemName ="";
     private Double itemCost = 0.0;
     public Item(){

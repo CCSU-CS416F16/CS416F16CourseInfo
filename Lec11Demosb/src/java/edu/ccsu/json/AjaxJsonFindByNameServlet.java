@@ -4,7 +4,6 @@
  */
 package edu.ccsu.json;
 
-import edu.ccsu.ajax.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
