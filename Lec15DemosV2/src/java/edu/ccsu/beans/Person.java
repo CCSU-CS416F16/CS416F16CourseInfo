@@ -4,11 +4,10 @@ package edu.ccsu.beans;
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,16 +16,17 @@ import javax.persistence.Table;
  * @author cw1491
  */
 @Entity
-@Table(name="Person")
+@Table(name = "Person")
 public class Person implements Serializable {
+
     @Id
-    @Column(name="ID")
+    @Column(name = "ID")
     private Integer ID = null;
-    
-    @Column(name="firstname")
+
+    @Column(name = "firstname")
     private String firstName = null;
-    
-    @Column(name="lastname")
+
+    @Column(name = "lastname")
     private String lastName = null;
 
     public Person() {
@@ -59,7 +59,6 @@ public class Person implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
 
     public String toString() {
         return "Person(" + firstName + " " + lastName + ")";

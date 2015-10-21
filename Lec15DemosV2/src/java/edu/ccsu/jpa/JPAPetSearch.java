@@ -4,11 +4,9 @@
  */
 package edu.ccsu.jpa;
 
-import edu.ccsu.beans.Person;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -18,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -29,8 +26,6 @@ public class JPAPetSearch extends HttpServlet {
 
   @PersistenceUnit(unitName = "Lec15DemosPU")
   private EntityManagerFactory entityManagerFactory;
-  @Resource
-  private UserTransaction userTransaction;
 
   /**
    * Processes requests for both HTTP
@@ -49,13 +44,11 @@ public class JPAPetSearch extends HttpServlet {
     try {
       EntityManager entityManager = entityManagerFactory.createEntityManager();
       String type = request.getParameter("type");
-      userTransaction.begin();
       String queryString = "Select p from Pet p where p.type = :type";
       Query query = entityManager.createQuery(queryString);
       query.setParameter("type", type);
       List matchingPets = query.getResultList();
       request.setAttribute("pets", matchingPets);
-      userTransaction.commit();
       request.getRequestDispatcher("PetDisplay.jsp").forward(request, response);
     } catch (Exception e) {
       out.println("Exception occurred: " + e.getMessage());

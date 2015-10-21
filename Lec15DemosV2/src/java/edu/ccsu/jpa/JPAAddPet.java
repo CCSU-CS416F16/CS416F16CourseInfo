@@ -7,8 +7,6 @@ package edu.ccsu.jpa;
 import edu.ccsu.beans.Pet;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.annotation.Resource;
-import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -17,7 +15,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -28,8 +25,6 @@ public class JPAAddPet extends HttpServlet {
 
     @PersistenceUnit(unitName = "Lec15DemosPU")
     private EntityManagerFactory entityManagerFactory;
-    @Resource
-    private UserTransaction userTransaction;
 
     /**
      * Processes requests for both HTTP
@@ -51,14 +46,13 @@ public class JPAAddPet extends HttpServlet {
             String type = request.getParameter("type");
             int age = Integer.parseInt(request.getParameter("age"));
             EntityManager entityManager = entityManagerFactory.createEntityManager();
-            userTransaction.begin();
             pet.setName(name);
             pet.setType(type);
             pet.setAge(age);
-            entityManager.joinTransaction();
+            entityManager.getTransaction().begin();
             entityManager.persist(pet);
-            
-            userTransaction.commit();
+            entityManager.getTransaction().commit();
+       
             out.println("Created " + pet.getName());
         } catch (Exception e) {
             out.println("Error occurred: " + e.getMessage());

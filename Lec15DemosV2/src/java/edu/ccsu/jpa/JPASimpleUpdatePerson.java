@@ -7,18 +7,14 @@ package edu.ccsu.jpa;
 import edu.ccsu.beans.Person;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -29,8 +25,7 @@ public class JPASimpleUpdatePerson extends HttpServlet {
 
   @PersistenceUnit(unitName = "Lec15DemosPU")
   private EntityManagerFactory entityManagerFactory;
-  @Resource
-  private UserTransaction userTransaction;
+
 
   /**
    * Processes requests for both HTTP
@@ -48,11 +43,11 @@ public class JPASimpleUpdatePerson extends HttpServlet {
     PrintWriter out = response.getWriter();
     try {
       EntityManager entityManager = entityManagerFactory.createEntityManager();
-      userTransaction.begin();
+      entityManager.getTransaction().begin();
       Person p = entityManager.find(Person.class, Integer.parseInt(request.getParameter("id")));
       p.setLastName(request.getParameter("newLastName"));
       entityManager.persist(p);
-      userTransaction.commit();
+      entityManager.getTransaction().commit();
       request.getRequestDispatcher("NamesLikeServlet").forward(request, response);
     } catch (Exception e) {
       out.println("Exception occurred: " + e.getMessage());

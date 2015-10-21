@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.*;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -35,8 +34,6 @@ public class JPAAddPerson extends HttpServlet {
     private DataSource dataSource;
     @PersistenceUnit(unitName = "Lec15DemosPU")
     private EntityManagerFactory entityManagerFactory;
-    @Resource
-    private UserTransaction userTransaction;
 
     protected int getNextId(String tableName) throws Exception {
         // Connect to database
@@ -70,12 +67,11 @@ public class JPAAddPerson extends HttpServlet {
             newPerson.setLastName(request.getParameter("lastName"));
             int nextId = getNextId("Person");
             newPerson.setID(nextId);
-
             EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-            userTransaction.begin();
+            entityManager.getTransaction().begin();
             entityManager.persist(newPerson);
-            userTransaction.commit();
+            entityManager.getTransaction().commit();
             
             request.getRequestDispatcher("NamesLikeServlet").forward(request, response);
         } catch (Exception e) {

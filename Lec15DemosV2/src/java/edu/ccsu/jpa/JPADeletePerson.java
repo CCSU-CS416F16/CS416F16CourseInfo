@@ -8,7 +8,6 @@ import edu.ccsu.beans.Person;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -18,7 +17,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -29,8 +27,6 @@ public class JPADeletePerson extends HttpServlet {
 
     @PersistenceUnit(unitName = "Lec15DemosPU")
     private EntityManagerFactory entityManagerFactory;
-    @Resource
-    private UserTransaction userTransaction;
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -45,19 +41,19 @@ public class JPADeletePerson extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
-            userTransaction.begin();
+            entityManager.getTransaction().begin();
             String queryString = "select p from Person p where p.lastName = :name";
             Query query = entityManager.createQuery(queryString);
             query.setParameter("name", request.getParameter("lastName"));
             List matchingPeople = query.getResultList();
             if (matchingPeople.size() == 0) {
                 out.println("No records affected");
-                userTransaction.commit();
+                entityManager.getTransaction().commit();
             } else {
                 for (int i = 0; i < matchingPeople.size(); i++) {
                     entityManager.remove((Person)matchingPeople.get(i));
                 }
-                userTransaction.commit();
+                entityManager.getTransaction().commit();
                 request.getRequestDispatcher("NamesLikeServlet").forward(request, response);
             }
         }catch(Exception e){

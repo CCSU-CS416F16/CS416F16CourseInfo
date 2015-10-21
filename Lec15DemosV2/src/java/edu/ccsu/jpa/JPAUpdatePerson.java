@@ -29,8 +29,7 @@ public class JPAUpdatePerson extends HttpServlet {
 
   @PersistenceUnit(unitName = "Lec15DemosPU")
   private EntityManagerFactory entityManagerFactory;
-  @Resource
-  private UserTransaction userTransaction;
+
 
   /**
    * Processes requests for both HTTP
@@ -51,7 +50,7 @@ public class JPAUpdatePerson extends HttpServlet {
       String firstName = request.getParameter("firstName");
       String lastName = request.getParameter("lastName");
       String newLastName = request.getParameter("newLastName");
-      userTransaction.begin();
+      entityManager.getTransaction().begin();
       String queryString = "Select p from Person p where p.firstName = :firstName and p.lastName = :lastName";
       Query query = entityManager.createQuery(queryString);
       query.setParameter("firstName", firstName);
@@ -62,7 +61,7 @@ public class JPAUpdatePerson extends HttpServlet {
         p.setLastName(newLastName);
         entityManager.persist(p);
       }
-      userTransaction.commit();
+      entityManager.getTransaction().commit();
       request.getRequestDispatcher("NamesLikeServlet").forward(request, response);
     } catch (Exception e) {
       out.println("Exception occurred: " + e.getMessage());
