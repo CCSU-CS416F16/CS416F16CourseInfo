@@ -2,7 +2,7 @@ package edu.ccsu.cs416.springschooldirectory;
 
 public enum ClassType {
 	 
-	  KINDERGARTEN("Kindergarten"),
+	  KINDERGARTEN( "Kindergarten"),
 	  FIRST("First grade"),
 	  SECOND("Second grade"),
 	  THIRD("Third grade"),
