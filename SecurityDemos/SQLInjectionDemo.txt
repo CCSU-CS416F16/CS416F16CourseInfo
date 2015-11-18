@@ -1,0 +1,7 @@
+' or firstname like '%
+
+
+' or 'a'='a
+
+
+Malicious'),(123456,'Subway','Jared

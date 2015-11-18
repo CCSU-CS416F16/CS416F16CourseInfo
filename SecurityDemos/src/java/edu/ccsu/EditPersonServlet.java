@@ -2,54 +2,74 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ccsu.jpa;
+package edu.ccsu;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.UserTransaction;
+import javax.sql.DataSource;
 
 /**
  *
- * @author cw1491
+ * @author cwilliam
  */
-@WebServlet(name = "NamesLikeServlet", urlPatterns = {"/NamesLikeServlet"})
-public class NamesLikeServlet extends HttpServlet {
+@WebServlet(name = "EditPersonServlet", urlPatterns = {"/EditPersonServlet"})
+public class EditPersonServlet extends HttpServlet {
 
-  @PersistenceUnit(unitName = "Lec15DemosPU")
-  private EntityManagerFactory entityManagerFactory;
-  @Resource
-  private UserTransaction userTransaction;
+  @Resource(name = "jdbc/Lect8aDB")
+  DataSource dataSource;
 
+  /**
+   * Processes requests for both HTTP
+   * <code>GET</code> and
+   * <code>POST</code> methods.
+   *
+   * @param request servlet request
+   * @param response servlet response
+   * @throws ServletException if a servlet-specific error occurs
+   * @throws IOException if an I/O error occurs
+   */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     try {
-      EntityManager entityManager = entityManagerFactory.createEntityManager();
-      String queryString = "select p from Person p where p.firstName like :name";
-      Query query = entityManager.createQuery(queryString);
-      String name = request.getParameter("name");
-      if (name == null) {
-        name = "";
+      out.println("<html>");
+      out.println("<head>");
+      out.println("<title>Servlet EditPersonServlet</title>");
+      out.println("</head>");
+      out.println("<body>");
+      out.println("<p style='color:red'>Note unsafe display</p>");
+      Connection connection = dataSource.getConnection();
+      String selectPersonSQL = "select * from person where id=?";
+      PreparedStatement selectStatement = connection.prepareStatement(selectPersonSQL);
+      selectStatement.setString(1, request.getParameter("id"));
+      ResultSet resultSet = selectStatement.executeQuery();
+      if (resultSet.next()) {
+        out.println("<form action=\"UpdatePersonServlet\" method=\"GET\">");
+        out.println("<input type=\"hidden\" name=\"id\" value=\"" + request.getParameter("id") + "\"/>");
+        out.println("<input type=\"textbox\" name=\"firstName\" value=\"" + resultSet.getString("firstname") + "\"/>");
+        out.println("<input type=\"textbox\" name=\"lastName\" value=\"" + resultSet.getString("lastname") + "\"/>");
+        out.println("<input type=\"submit\" value=\"Update person\"/>");
+        out.println("</form>");
+      } else {
+        out.println("Person not found");
       }
-      query.setParameter("name", name + "%");
-      List matchingPeople = query.getResultList();
-      request.setAttribute("personList", matchingPeople);
-      request.getRequestDispatcher("PersonDisplay.jsp").forward(request, response);
+      out.println("</body>");
+      out.println("</html>");
+      resultSet.close();
+      selectStatement.close();
+      connection.close();
     } catch (Exception e) {
       out.println("Exception occurred: " + e.getMessage());
-      e.printStackTrace();
     } finally {
       out.close();
     }

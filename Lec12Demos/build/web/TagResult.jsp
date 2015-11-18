@@ -16,6 +16,6 @@
     </head>
     <body>
         <h1>My address</h1>
-        <ad:Address addressType="Shipping"/>
+        <ad:Address addressType="Shipping" passedAddress="${address}"/>
     </body>
 </html>

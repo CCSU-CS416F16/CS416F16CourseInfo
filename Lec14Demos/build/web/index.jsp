@@ -84,7 +84,7 @@
         <fmt:parseDate value="04/02/1976" pattern="MM/dd/yyyy" var="myDate"/>
         <fmt:parseNumber value="40,000.00" var="myNumber"/>
         <fmt:formatDate value="${myDate}" pattern="M/d/yy"/><br/>
-        <fmt:formatNumber value="${myNumber}"/>
-
+        <fmt:formatNumber value="${myNumber}"/><br/>
+        <fmt:formatNumber value="3425234523452345"/>  
     </body>
 </html>

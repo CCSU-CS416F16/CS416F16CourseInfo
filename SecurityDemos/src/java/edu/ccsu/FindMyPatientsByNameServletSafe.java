@@ -2,53 +2,72 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.ccsu.jpa;
+package edu.ccsu;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.transaction.UserTransaction;
+import javax.sql.DataSource;
 
 /**
  *
- * @author cw1491
+ * @author cwilliam
  */
-@WebServlet(name = "NamesLikeServlet", urlPatterns = {"/NamesLikeServlet"})
-public class NamesLikeServlet extends HttpServlet {
+@WebServlet(name = "FindMyPatientsByNameServletSafe", urlPatterns = {"/FindMyPatientsByNameServletSafe"})
+public class FindMyPatientsByNameServletSafe extends HttpServlet {
 
-  @PersistenceUnit(unitName = "Lec15DemosPU")
-  private EntityManagerFactory entityManagerFactory;
-  @Resource
-  private UserTransaction userTransaction;
+  @Resource(name = "jdbc/Lect8aDB")
+  DataSource dataSource;
 
+  /**
+   * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+   * methods.
+   *
+   * @param request servlet request
+   * @param response servlet response
+   * @throws ServletException if a servlet-specific error occurs
+   * @throws IOException if an I/O error occurs
+   */
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
           throws ServletException, IOException {
     response.setContentType("text/html;charset=UTF-8");
     PrintWriter out = response.getWriter();
     try {
-      EntityManager entityManager = entityManagerFactory.createEntityManager();
-      String queryString = "select p from Person p where p.firstName like :name";
-      Query query = entityManager.createQuery(queryString);
-      String name = request.getParameter("name");
-      if (name == null) {
-        name = "";
+      out.println("<html>");
+      out.println("<head>");
+      out.println("<title>Servlet DisplayNames</title>");
+      out.println("</head>");
+      out.println("<body>");
+      String firstName = request.getParameter("firstName");
+      if (firstName == null) {
+        firstName = "";
       }
-      query.setParameter("name", name + "%");
-      List matchingPeople = query.getResultList();
-      request.setAttribute("personList", matchingPeople);
-      request.getRequestDispatcher("PersonDisplay.jsp").forward(request, response);
+
+      Connection connection = dataSource.getConnection();
+      String sql = "select * from person where authorized = 'Bob' and firstname = ?";
+      PreparedStatement selectStatement = connection.prepareStatement(sql);
+      selectStatement.setString(1, firstName);
+      ResultSet resultSet = selectStatement.executeQuery();
+      while (resultSet.next()) {
+        out.println("<a href=\"EditPersonServletSoln?id=" + resultSet.getString("id") + "\">");
+        out.println(resultSet.getString("firstName") + " " + resultSet.getString("lastName") + "</a><br/>");
+      }
+      resultSet.close();
+      selectStatement.close();
+      connection.close();
+      out.println("</body>");
+      out.println("</html>");
     } catch (Exception e) {
-      out.println("Exception occurred: " + e.getMessage());
+      out.println("Exception occurred " + e.getMessage());
       e.printStackTrace();
     } finally {
       out.close();
@@ -57,8 +76,7 @@ public class NamesLikeServlet extends HttpServlet {
 
   // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
   /**
-   * Handles the HTTP
-   * <code>GET</code> method.
+   * Handles the HTTP <code>GET</code> method.
    *
    * @param request servlet request
    * @param response servlet response
@@ -72,8 +90,7 @@ public class NamesLikeServlet extends HttpServlet {
   }
 
   /**
-   * Handles the HTTP
-   * <code>POST</code> method.
+   * Handles the HTTP <code>POST</code> method.
    *
    * @param request servlet request
    * @param response servlet response

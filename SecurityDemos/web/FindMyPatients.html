@@ -1,0 +1,26 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <form action="FindMyPatientsByNameServlet" method="GET">
+          <p style="color:red">Note susceptible to SQL injection</p>
+        Find my patients whose first names that start: 
+        <input type="text" name="firstName"/>
+        <input type="submit" value="Search"/>
+        </form>
+      <br/><br/>
+      <p style="color:red">Protects server side</p>
+              <form action="FindMyPatientsByNameServletSafe" method="GET">
+        Find my patients whose first names that start: 
+        <input type="text" name="firstName"/>
+        <input type="submit" value="Search Safe"/>
+        </form>
+    </body>
+</html>
