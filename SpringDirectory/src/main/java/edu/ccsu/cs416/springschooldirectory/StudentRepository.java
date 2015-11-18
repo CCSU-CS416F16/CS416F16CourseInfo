@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @NamedQuery(name = "Person.findByAssignedClassId", query = "SELECT s FROM Student s WHERE s.assignedClass.id")
 public interface StudentRepository extends JpaRepository<Student, Long>{
   public List<Student> findByAssignedClassId(Long assignedClassId);
+  public List<Student> findByFirstnameStartsWith(String firstname);
 }

@@ -43,7 +43,7 @@
           </tbody>
         </table>
       </c:if>
-      <a href="addstudent">Add a student</a>
+      <a href="addstudent">Add a student</a><br/>
       <a href="classes">List classes</a>
     </div>
   </body>

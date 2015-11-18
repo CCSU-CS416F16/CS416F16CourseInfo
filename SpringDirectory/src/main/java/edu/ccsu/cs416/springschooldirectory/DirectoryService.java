@@ -57,4 +57,8 @@ public class DirectoryService {
   public List<Student> findStudentForClass(Long id) {
     return studentRepository.findByAssignedClassId(id);
   }
+  
+    public List<Student> findStudentsStartingWith(String firstname){
+      return studentRepository.findByFirstnameStartsWith(firstname);
+    }
 }
