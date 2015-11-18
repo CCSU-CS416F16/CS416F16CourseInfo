@@ -36,7 +36,8 @@
 		</c:if>
     <a href="addclass">Add a class</a><br/>
     <a href="addstudent">Add a student</a><br/>
-    <a href="students">List students</a>
+    <a href="students">List students</a><br/>
+    <a href="ajaxsearch">AJAX student lookup</a>
 	</div>
 </body>
 </html>
