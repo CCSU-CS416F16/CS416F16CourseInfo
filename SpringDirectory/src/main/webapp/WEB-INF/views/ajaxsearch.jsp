@@ -7,7 +7,7 @@
       function getMatchingStudents() {
         $.ajax({
           url: 'ajaxmatchingstudents',
-          data: "passedName="+document.getElementById('firstName').value,
+          data: "passedName=" + document.getElementById('firstName').value,
           success: function (data) {
             $('#result').html(data);
           }
@@ -23,6 +23,8 @@
       <a href="addstudent">Add a student</a><br/>
       <a href="classes">List classes</a>
     </div>
+
+
 
   </body>
 </html>
