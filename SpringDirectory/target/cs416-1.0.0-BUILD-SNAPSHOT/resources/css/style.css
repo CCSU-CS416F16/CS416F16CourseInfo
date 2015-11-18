@@ -1,0 +1,6 @@
+* { font-family:Courier}
+table, th, td {border:1px solid green;}
+table {border-collapse:collapse;width:100%}
+th {height:10px;text-align:center;background-color:green;color:white;}
+td {text-align:left;height:10px;vertical-align:bottom;}
+.container {width:80%;margin:30px auto}
