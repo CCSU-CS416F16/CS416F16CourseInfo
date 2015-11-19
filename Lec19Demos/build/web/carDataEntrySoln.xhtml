@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Car Data Entry</title>
+    </h:head>
+    <h:body>
+        <h1>Car data entry</h1>
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h:messages style="color:red;font-weight:bold;"></h:messages>
+        <h:form>
+
+            <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+                <h:outputText value="Mileage"></h:outputText>
+                <h:inputText label="Number of miles" value="#{car.numberOfMiles}" >
+                    <f:validateLongRange minimum="0" maximum="500000"/>
+                </h:inputText>
+                <h:outputText value="Make"></h:outputText>
+                <h:inputText label="Make" value="#{car.make}" required="true">
+                    <f:validateLength minimum="2" maximum="30"></f:validateLength>
+                </h:inputText>
+
+                <h:outputText value="Email"></h:outputText>
+                <h:inputText label="Email" value="#{customer.email}" >
+                    <f:validator validatorId="emailValidator" />
+                </h:inputText>
+
+                <h:outputText value="Model"></h:outputText>
+                <h:inputText label="Model" value="#{car.model}" required="true" 
+                             validator="#{validationUtils.validateAlphaSpace}">
+                    <f:validateLength minimum="2" maximum="30"></f:validateLength>
+                </h:inputText>
+                <h:outputText value="State owned"></h:outputText>
+                <h:inputText label="State owned" value="#{car.stateOwned}"
+                             validator="#{validationUtils.validateState}">
+                </h:inputText>
+                <h:outputText value="Zip code"></h:outputText>
+                <h:inputText label="Zip code" value="#{car.zipCode}"
+                             validator="#{validationUtilsSoln.validateZipCode}">
+                </h:inputText>
+                <h:panelGroup></h:panelGroup>
+                <h:commandButton action="#{carControllerSoln.saveCar}" value="Save"></h:commandButton>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

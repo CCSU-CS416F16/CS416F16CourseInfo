@@ -1,0 +1,34 @@
+/* 
+    Document   : BasicFormatting
+    Created on : Nov 15, 2011, 2:35:25 PM
+    Author     : cw1491
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+.leftAlign{
+    text-align:left;
+}
+
+.centerAlign{
+    text-align:center;
+}
+
+.fieldnames{
+    text-align:right;
+    font-weight:bold;
+}
+
+.errorMsg{
+    color:red;
+    font-weight:bold;
+}
+
+.blue{
+    color:blue;
+}

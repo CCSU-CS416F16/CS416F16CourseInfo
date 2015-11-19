@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <navigation-rule>
+        <from-view-id>navigationEx2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>valid</from-outcome>
+            <to-view-id>purchaseComplete.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>invalid</from-outcome>
+            <to-view-id>navigationEx2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    
+    
+    <navigation-rule>
+        <from-view-id>navigationEx3.xhtml</from-view-id>
+        <navigation-case>
+            <if>#{car.numberOfMiles &gt; 100000}</if>
+            <to-view-id>highMileageCarSales.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>jointOwnership</from-outcome>
+            <to-view-id>jointOwnershipForm.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>emissions</from-outcome>
+            <to-view-id>emissionsForm.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>none</from-outcome>
+            <if>#{customer.needsOwnerInfo}</if>
+            <to-view-id>getOwnerInfo.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>none</from-outcome>
+            <to-view-id>purchaseComplete.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

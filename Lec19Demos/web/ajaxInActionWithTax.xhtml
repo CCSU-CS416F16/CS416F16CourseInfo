@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Calculator</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+
+                <h:outputText value="Price 1"/>
+                <h:inputText id="price1" label="Price item 1" value="#{priceCalculationSoln.price1}">
+                    <f:ajax  execute="price2" render="total" event="keyup"/>
+                </h:inputText>
+                
+                <h:outputText value="Price 2"/>
+                <h:inputText id="price2" label="Price item 2" value="#{priceCalculationSoln.price2}">
+                    <f:ajax  execute="price1 " render="total" event="keyup"/>
+                </h:inputText>
+                
+                <h:outputText value="Total price"/>
+                <h:outputText id="total" value="#{priceCalculationSoln.total}"/>
+                
+                <h:outputText value="Tax"/>
+                <h:inputText id="tax" value="#{priceCalculationSoln.tax}">
+                </h:inputText>
+                
+                <h:outputText value="Tax amount"/>
+                <h:outputText id="taxAmount" value="#{priceCalculationSoln.taxAmount}"/>
+                
+                <h:panelGroup/>
+                <h:commandButton actionListener="#{priceCalculationSoln.calcTotalWithTax}" 
+                                 value="Calculate price with Tax">
+                    <f:ajax execute="price1 price2" render="totalWithTax"/>
+                </h:commandButton>
+                
+                <h:outputText value="Total with Tax"/>
+                <h:outputText id="totalWithTax" value="#{priceCalculationSoln.priceWithTax}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+

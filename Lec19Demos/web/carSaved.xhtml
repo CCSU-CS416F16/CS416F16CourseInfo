@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Car data saved</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h1>Information saved successfully</h1>
+        <h:form id="myForm">
+            <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+                <h:outputText value="Make:"></h:outputText>
+                <h:outputText value="#{car.make}"></h:outputText>
+                <h:outputText value="Model:"></h:outputText>
+                <h:outputText value="#{car.model}"></h:outputText>
+                <h:outputText value="State Owned:"></h:outputText>
+                <h:outputText value="#{car.stateOwned}"></h:outputText>
+                <h:outputText value="Number of miles:"></h:outputText>
+                <h:outputText id="numMiles" value="#{car.numberOfMiles}"></h:outputText>
+                <h:outputText value="Zip code:"></h:outputText>
+                <h:outputText value="#{car.zipCode}"></h:outputText>
+            </h:panelGrid>
+            <br/><br/><br/>
+            
+            <h:outputText value="Add mileage"></h:outputText>
+            <h:inputText id="addMileage" value="#{car.newMiles}">
+            </h:inputText>
+            <h:commandButton actionListener="#{car.addMileage}" value="Add mileage">
+                <f:ajax execute="addMileage" render="numMiles" />
+            </h:commandButton>            
+        </h:form>
+    </h:body>
+</html>
+

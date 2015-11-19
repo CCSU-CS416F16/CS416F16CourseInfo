@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+            xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:outputStylesheet library="css" name="styles.css"/>
+        <h:form>
+            <h:panelGrid columns="2" columnClasses="blue rightAlign,leftAlign">
+                <h:outputText value="First Name"/>
+                <h:inputText label="firstName" value="#{customer.firstName}"/>
+                <h:outputText value="Last Name"/>
+                <h:inputText label="lastName" value="#{customer.lastName}"/>
+                <h:outputText value="Email"/>
+                <h:inputText label="Email" value="#{customer.email}">
+                    <f:validator validatorId="emailValidator" />
+                </h:inputText>
+                <h:panelGroup>
+                    <h:outputText value="State"/>
+                    <h:inputText label="State" value="#{customer.usState}"/>
+                </h:panelGroup>
+                <h:panelGroup></h:panelGroup>
+            </h:panelGrid>
+            <h:commandButton action="confirmation" value="submit"></h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
