@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+  <h:head>
+    <title>Create user</title>
+  </h:head>
+  <h:body>    
+    <h:form>
+      <h2>Create user</h2>
+      <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
+        <h:outputText value="Username:"></h:outputText>
+        <h:inputText label="username" value="#{user.username}" required="true">
+        </h:inputText>
+        <h:outputText value="Password"></h:outputText>
+        <h:inputSecret label="password" value="#{user.password}" required="true">
+        </h:inputSecret>
+        <h:selectManyCheckbox value="#{user.groupNames}">
+          <f:selectItem itemValue="user" itemLabel="user" />
+          <f:selectItem itemValue="admin" itemLabel="admin" />
+        </h:selectManyCheckbox>
+        <h:commandButton action="#{loginController.createUser()}" value="Submit"></h:commandButton>
+      </h:panelGrid>
+    </h:form>
+  </h:body>
+</html>
