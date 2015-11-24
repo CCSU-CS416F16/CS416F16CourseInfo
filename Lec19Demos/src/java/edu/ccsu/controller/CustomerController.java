@@ -51,7 +51,12 @@ public class CustomerController {
         String selectSQL = "select c from Customer c where c.firstName like :name";
         try {
             Query selectQuery = entityManager.createQuery(selectSQL);
-            selectQuery.setParameter("name", customer.getFirstName() + "%");
+            if (customer.getFirstName()!=null){
+              selectQuery.setParameter("name", customer.getFirstName() + "%");
+            }else{
+              selectQuery.setParameter("name", "%");
+            }
+            
             customers = selectQuery.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
