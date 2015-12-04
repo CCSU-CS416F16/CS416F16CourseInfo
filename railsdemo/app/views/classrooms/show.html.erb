@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @classroom.teacher %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @classroom.grade %>
+</p>
+
+<p>
+  <strong>Classid:</strong>
+  <%= @classroom.classid %>
+</p>
+
+<p>
+  <strong>Number of students:</strong>
+  <%= @students.count %>
+</p>
+
+<table>
+  <thead>
+  <tr>
+    <th>Fullname</th>
+    <th>Phone</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @students.each do |student| %>
+      <tr>
+        <td><%= student.fullname %></td>
+        <td><%= student.phone %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_classroom_path(@classroom) %> |
+<%= link_to 'Back', classrooms_path %>
