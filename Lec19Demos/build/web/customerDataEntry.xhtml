@@ -8,13 +8,14 @@
     </h:head>
     <h:body>
         <h:outputStylesheet library="css" name="styles.css"/>
-        <h:messages style="color:red;font-weight:bold;"></h:messages>
+        <h:messages id="messages" style="color:red;font-weight:bold;"></h:messages>
         <h:form>
 
             <h:panelGrid columns="2" columnClasses="rightAlign,leftAlign">
                 <h:outputText value="First Name"></h:outputText>
                 <h:inputText label="First Name" value="#{customer.firstName}" required="true">
                     <f:validateLength minimum="2" maximum="30"></f:validateLength>
+                    <f:ajax event="blur" execute="@this" render="messages"/>
                 </h:inputText>
                 <h:outputText value="Last Name"></h:outputText>
                 <h:inputText label="Last Name" value="#{customer.lastName}" required="true" 

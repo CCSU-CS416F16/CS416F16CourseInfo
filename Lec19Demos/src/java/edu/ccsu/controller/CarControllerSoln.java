@@ -62,9 +62,10 @@ public class CarControllerSoln {
 
     public String deleteCar() {
         String returnValue = "error";
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             userTransaction.begin();
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            car = entityManager.find(Car.class, car.getCarId());
             entityManager.remove(car);
             userTransaction.commit();
             returnValue = "deleteSuccessful";
