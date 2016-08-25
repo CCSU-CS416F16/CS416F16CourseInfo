@@ -1,4 +1,2 @@
-# CS416 Class Demos
-Code used for demos in class
-
-This code should in no way be considered production ready, but rather as quick demos of various concepts
+# CS416 Course Info
+This repository contains code demos from class and other reference material.
