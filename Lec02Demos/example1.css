@@ -1,0 +1,15 @@
+h1{
+ text-align:right;
+ color:blue;
+}
+p{
+ text-align:center;
+ color:red;
+}
+ol{
+ list-style-type:upper-roman;
+ font-style:italic;
+}
+body{
+ background:lightblue no-repeat url("http://www.mycity-web.com/wp-content/uploads/2015/08/tumblr_static_aermw5xcjig4sscssc4s8kokk.jpg");
+}
