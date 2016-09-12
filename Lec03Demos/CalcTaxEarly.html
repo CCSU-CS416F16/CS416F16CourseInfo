@@ -1,0 +1,20 @@
+<html>
+<head>
+ <script>
+  function CalculateTax(){
+    var cost = parseFloat(document.getElementById('cost').value);
+	var tax = parseFloat(document.getElementById('tax').value);
+	var item = document.getElementById('item').value;
+    var taxAmt = cost * tax +cost;
+	document.getElementById('message').value = 'Total cost: '+taxAmt + ' for '+item;
+  }
+ </script>
+</head>
+<body>
+  Cost<input type="text" id="cost"/> <br/>
+  Tax<input type="text" id="tax"/> <br/>
+  Item<input type="text" id="item"/> <br/>
+  <input type="button" value="Calculate" onclick="CalculateTax();"/> <br/>
+  Message<input type="text" id="message" size="200"/>
+</body>
+</html>

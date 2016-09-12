@@ -1,0 +1,14 @@
+<html>
+<body>
+  Fahrenheit<input type="text" id="tempF"/> <br/>
+  <input type="button" value="F->C" onclick="
+   var tempF = parseFloat(document.getElementById('tempF').value);
+   var tempC = (tempF-32)*(5/9);
+   document.getElementById('tempC').value = tempC;
+  "/>
+  <input type="button" value="F<-C" />
+  <br/>
+  Celsius<input type="text" id="tempC"/>
+  
+</body>
+</html>
