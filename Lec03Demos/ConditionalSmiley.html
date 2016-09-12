@@ -1,0 +1,24 @@
+<html>
+<head>
+ <script>
+  function CheckNumber(){
+    var number = parseInt(document.getElementById('number').value);
+	var odd = (number % 2) != 0;
+	if (odd){
+	  document.getElementById('emotion').src = 'smiley.png';
+	  document.getElementById('emotion').height = document.getElementById('emotion').height + 10;
+	}else{
+	  document.getElementById('emotion').src = 'sad.png';
+	}
+  }
+ </script>
+</head>
+<body>
+ Enter an odd number:
+ <input type="text" id="number" value="3"/> <br/>
+ <input type="button" value="Check" 
+        onclick="CheckNumber();" />
+ <br/>
+ <img src="smiley.png" height="100" id="emotion"/>
+</body>
+</html>

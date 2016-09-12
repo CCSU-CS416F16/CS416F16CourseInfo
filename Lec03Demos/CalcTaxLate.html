@@ -1,9 +1,21 @@
 <html>
+<head>
+ <script>
+  function Calculate(){
+   var cost = parseFloat(document.getElementById('cost').value);
+   var tax = parseFloat(document.getElementById('tax').value);
+   var total = cost + (tax*cost);
+   var item = document.getElementById('item').value;
+   document.getElementById('message').value='Total cost: '+
+       total+' for the '+item;
+  }
+ </script>
+</head>
 <body>
-  Cost<input type="text" /><br/>
-  Tax<input type="text" /><br/>
-  Item<input type="text" /><br/>
-  <input type="button" value="Calculate" /><br/>
-  Message<input type="text" />
+  Cost<input type="text" id="cost"/><br/>
+  Tax<input type="text" id="tax"/><br/>
+  Item<input type="text" id="item"/><br/>
+  <input type="button" value="Calculate" onclick="Calculate();"/><br/>
+  Message<input type="text" id="message" size="100"/>
 </body>
 </html>
