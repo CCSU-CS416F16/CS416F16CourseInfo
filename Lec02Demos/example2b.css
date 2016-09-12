@@ -1,0 +1,22 @@
+h1{
+ color:blue;
+ text-decoration:underline; 
+}
+p{
+ color:red;
+}
+body{
+ background:lightblue;
+}
+h1.important{
+ font-style:italic;
+}
+p.important{
+ font-weight:bold;
+}
+.important{
+ background:lightgrey;
+}
+.center{
+ text-align:center;
+}

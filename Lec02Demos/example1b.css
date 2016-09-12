@@ -1,0 +1,14 @@
+h1{
+ color:blue;
+ text-align:right;
+}
+body{
+ background:lightblue no-repeat right bottom url("https://www.hennydonovanmotif.co.uk/images/small-star-C4.jpg");
+}
+p{
+ text-align:center;
+}
+ol{
+ font-style:italic;
+ list-style-type:upper-roman;
+}
