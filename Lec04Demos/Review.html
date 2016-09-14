@@ -1,0 +1,17 @@
+<html>
+<head>
+ <title>Review of lecture 4</title>
+ <script>
+  function Sum(passedNum){
+   var total = parseFloat(document.getElementById('total').value);
+   var newval = parseFloat(document.getElementById('newval').value);
+   document.getElementById('total').value = total + newval + passedNum;
+  }
+ </script>
+</head>
+<body>
+  New value<input type="textbox" id="newval"/>
+  Total<input type="textbox" id="total"/>
+  <input type="button"  value="Sum" onclick="Sum(4);"/>
+</body>
+</html>

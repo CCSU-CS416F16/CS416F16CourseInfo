@@ -1,0 +1,28 @@
+<html>
+<head>
+  <script>
+    function GetMessage(){
+	  var cardTotal = parseFloat(document.getElementById('cardTotal').value);
+	  var money = parseFloat(document.getElementById('money').value);
+      if (cardTotal<=21){
+        document.getElementById('msg').value='You are fine.';
+		money = money + 10;
+      }else{
+        document.getElementById('msg').value='You bust!';
+		money = money - 10;
+      }
+	  document.getElementById('money').value = money;
+	}
+  </script>
+</head>  
+<body>
+  <h1>Blackjack</h1>
+  Enter your card total:
+  <input type="text" id="cardTotal" /><br/>
+  Message:
+  <input type="text" id="msg"/><br/>
+  <input type="button" value="Check total" onclick="GetMessage();"/>
+  <br/>
+  Money<input type="text" value="100" id="money"/>
+</body>
+</html>
