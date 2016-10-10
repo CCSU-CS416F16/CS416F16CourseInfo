@@ -17,5 +17,6 @@
     </head>
     <body>
         <h1>Hello <jsp:getProperty name="myPerson" property="firstName" /> <jsp:getProperty name="myPerson" property="lastName" />!</h1>
+        <h1>Hello <%= myPerson.getFirstName() %> <%= myPerson.getLastName() %>!</h1>
     </body>
 </html>
