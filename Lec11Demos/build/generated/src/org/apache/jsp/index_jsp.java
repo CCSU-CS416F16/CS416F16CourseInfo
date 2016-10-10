@@ -66,7 +66,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<a href=\"pageWithError.jsp\">Page with error</a><br/>\n");
       out.write("<a href=\"demoJavaBean.jsp\">Java bean</a><br/>\n");
       out.write("<a href=\"beanCounter.jsp\">Bean counter</a><br/>\n");
-      out.write("<a href=\"CDEntry.jsp\">Your CD entry shell</a><br/>\n");
+      out.write("<a href=\"CDEntrySoln.jsp\">Your CD entry shell</a><br/>\n");
       out.write("<a href=\"CDEntrySoln.jsp\">What the CD functionality should look like when completely done</a><br/>\n");
       out.write("\n");
       out.write("    </body>\n");
