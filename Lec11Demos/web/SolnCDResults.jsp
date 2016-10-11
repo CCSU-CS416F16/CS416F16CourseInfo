@@ -3,14 +3,14 @@
     Created on : Oct 10, 2011, 5:00:02 PM
     Author     : cw1491
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="errorPage.jsp"%>
 <%@page import="java.util.*;"%>
 <%@page import="edu.ccsu.SolnCDBean;"%>
 <jsp:useBean id="enteredCD" scope="page" class="edu.ccsu.SolnCDBean" />
 <jsp:setProperty name="enteredCD" property="*" />
 <jsp:useBean id="AverageRatings" scope="session" class="edu.ccsu.SolnCDEntries" />
 <jsp:setProperty name="AverageRatings" property="ratings" param="rating" />
+
 <!DOCTYPE html>
 <html>
     <head>
