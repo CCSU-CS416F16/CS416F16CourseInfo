@@ -23,3 +23,6 @@ SecurityDemos/build/
 /Lec22SecurityRealmDemos/dist/
 /FinalProjectCS416Davis/nbproject/private/
 /Lec09Demos/dist/
+/SecurityDemos/dist/
+SecurityDemos/web/malicious/
+SecurityDemos/src/java/edu/ccsu/malicious/
