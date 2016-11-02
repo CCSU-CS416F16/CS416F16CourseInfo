@@ -26,3 +26,5 @@ SecurityDemos/build/
 /SecurityDemos/dist/
 SecurityDemos/web/malicious/
 SecurityDemos/src/java/edu/ccsu/malicious/
+*/build/*
+*/generated/*

@@ -13,5 +13,7 @@
     </head>
     <body>
         <p>Server date and time: <% out.println(new Date()); %>
+        <p>Server date and time: <%= new Date() %>
+
     </body>
 </html>

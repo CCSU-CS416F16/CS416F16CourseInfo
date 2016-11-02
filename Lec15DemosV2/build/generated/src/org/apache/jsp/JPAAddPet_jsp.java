@@ -41,26 +41,26 @@ public final class JPAAddPet_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<html>\r\n");
-      out.write("  <head>\r\n");
-      out.write("    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("    <title>JSP Page</title>\r\n");
-      out.write("  </head>\r\n");
-      out.write("  <body>\r\n");
-      out.write("    <h1>Add Pet</h1>\r\n");
-      out.write("    <form action=\"JPAAddPet\" method=\"POST\">\r\n");
-      out.write("      Name:<input type=\"text\" name=\"name\"/><br/>\r\n");
-      out.write("      Type:<input type=\"text\" name=\"type\"/><br/>\r\n");
-      out.write("      Age:<input type=\"text\" name=\"age\"/><br/>\r\n");
-      out.write("      <input type=\"submit\" value=\"Add pet\"/>\r\n");
-      out.write("    </form>\r\n");
-      out.write("    <a href=\"index.jsp\">Back to Index</a><br/>\r\n");
-      out.write("  </body>\r\n");
-      out.write("</html>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("  <head>\n");
+      out.write("    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("    <title>JSP Page</title>\n");
+      out.write("  </head>\n");
+      out.write("  <body>\n");
+      out.write("    <h1>Add Pet</h1>\n");
+      out.write("    <form action=\"JPAAddPet\" method=\"POST\">\n");
+      out.write("      Name:<input type=\"text\" name=\"name\"/><br/>\n");
+      out.write("      Type:<input type=\"text\" name=\"type\"/><br/>\n");
+      out.write("      Age:<input type=\"text\" name=\"age\"/><br/>\n");
+      out.write("      <input type=\"submit\" value=\"Add pet\"/>\n");
+      out.write("    </form>\n");
+      out.write("    <a href=\"index.jsp\">Back to Index</a><br/>\n");
+      out.write("  </body>\n");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

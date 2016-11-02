@@ -41,25 +41,25 @@ public final class JPAAddPerson_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<html>\r\n");
-      out.write("    <head>\r\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
-      out.write("        <title>JSP Page</title>\r\n");
-      out.write("    </head>\r\n");
-      out.write("    <body>\r\n");
-      out.write("        <h1>Add person</h1>\r\n");
-      out.write("        <form action=\"JPAAddPerson\" method=\"POST\">\r\n");
-      out.write("            First name:<input type=\"text\" name=\"firstName\"/><br/>\r\n");
-      out.write("            Last name:<input type=\"text\" name=\"lastName\"/><br/>\r\n");
-      out.write("            <input type=\"submit\" value=\"Add person\"/>\r\n");
-      out.write("        </form>\r\n");
-      out.write("        <a href=\"index.jsp\">Back to Index</a><br/>\r\n");
-      out.write("    </body>\r\n");
-      out.write("</html>\r\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head>\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <title>JSP Page</title>\n");
+      out.write("    </head>\n");
+      out.write("    <body>\n");
+      out.write("        <h1>Add person</h1>\n");
+      out.write("        <form action=\"JPAAddPerson\" method=\"POST\">\n");
+      out.write("            First name:<input type=\"text\" name=\"firstName\"/><br/>\n");
+      out.write("            Last name:<input type=\"text\" name=\"lastName\"/><br/>\n");
+      out.write("            <input type=\"submit\" value=\"Add person\"/>\n");
+      out.write("        </form>\n");
+      out.write("        <a href=\"index.jsp\">Back to Index</a><br/>\n");
+      out.write("    </body>\n");
+      out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
