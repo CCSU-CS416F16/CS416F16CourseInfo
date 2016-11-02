@@ -51,10 +51,14 @@ public class FindMyPatientsByNameServlet extends HttpServlet {
 
             Connection connection = dataSource.getConnection();
             Statement stmt = connection.createStatement();
-
+            // Simulate being logged in
+            request.getSession().setAttribute("user","Chad");
+            String user = (String)request.getSession().getAttribute("user");
             // Susceptible to SQL injection
-            String sql = "select * from person where authorized = '"+request.getSession().getAttribute("user")+"' and firstname = '"+firstName+"'";
+            String sql = "select * from person where authorized = '"+user+"' and firstname = '"+firstName+"'";
+            System.out.println("SQL to execute: "+sql);
             ResultSet resultSet = stmt.executeQuery(sql);
+            out.println("<h1>Results</h1>");
             while(resultSet.next()){
                 out.println("<a href=\"EditPersonServlet?id="+resultSet.getString("id")+"\">");
                 out.println(resultSet.getString("firstName")+" "+resultSet.getString("lastName")+"</a><br/>");

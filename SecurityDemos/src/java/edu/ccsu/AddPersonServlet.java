@@ -58,7 +58,8 @@ public class AddPersonServlet extends HttpServlet {
             // Add the new person to the DB
             Statement stmt = connection.createStatement();
             // suceptible to XSS
-            sql = "insert into person (id,firstname,lastname) values ("+nextId+",'"+firstName+"','"+lastName+"')";
+            sql = "insert into person (id,firstname,lastname,admin) values ("+nextId+",'"+firstName+"','"+lastName+"',0)";
+            System.out.println("SQL to execute: "+sql);
             stmt.execute(sql);
             
             //PreparedStatement insertPerson = connection.prepareStatement(sql);

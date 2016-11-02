@@ -10,10 +10,11 @@ and open the template in the editor.
     </head>
     <body>
         <p style="color:red">Susceptible to SQL injection and XSS</p>
-        <form action="AddPersonServlet">
+        <form action="AddPersonServlet" method="POST">
             First<input type="text" name="firstName" value="" /><br/>
             Last<input type="text" name="lastName" value="" /><br/>
             <input type="submit" value="Add person" />
         </form>
+        <a href="DisplayNames">Display names</a>
     </body>
 </html>
