@@ -1,0 +1,9 @@
+<h1>Directory results</h1>
+<table border="1">
+<% @students.each do |student| %>
+      <tr>
+        <td><%= student.fullname %></td>
+        <td><%= student.phone %></td>
+      </tr>
+  <% end %>
+</table>
